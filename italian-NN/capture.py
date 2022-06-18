@@ -6,7 +6,9 @@ import time
 FRAMES = 10
 INTERVAL = 0.5
 
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(1) 
+if cap is None or not cap.isOpened():
+    cap = cv2.VideoCapture(0)
 
 for _ in range(FRAMES):
     ret, frame = cap.read()
