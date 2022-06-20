@@ -6,7 +6,7 @@ import time
 import os
 import glob
 
-INTERVAL = 0.250
+INTERVAL = 0.1
 
 FRAME_SIZE = (256, 256)
 
@@ -52,15 +52,15 @@ while reply == "N":
         print("Capturing...")
         time.sleep(INTERVAL)
         #cv2.imwrite(filename=framePath, img=frame)
-        #cv2.imshow("culo", frame)
-        #cv2.waitKey(INTERVAL)
+        cv2.imshow("Acquisition", frame)
+        cv2.waitKey(int(INTERVAL * 1000))
 
     print("These are the frames that have been captured!\n")
     time.sleep(3)
 
     for key in frames.keys():
-        cv2.imshow("culo", frames[key])
-        cv2.waitKey(500)
+        cv2.imshow("Acquisition:", frames[key])
+        cv2.waitKey(int(INTERVAL * 1000))
 
     cv2.destroyAllWindows()
 
