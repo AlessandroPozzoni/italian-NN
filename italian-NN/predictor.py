@@ -24,7 +24,7 @@ cap = cv2.VideoCapture(1)
 if cap is None or not cap.isOpened():
     cap = cv2.VideoCapture(0)
 
-model = keras.models.load_model(os.path.join(os.path.dirname(os.path.abspath(__file__)), "models\\"))
+model = keras.models.load_model(os.path.join(os.path.dirname(os.path.abspath(__file__)), "model2"))
 
 
 v = 0
@@ -32,7 +32,7 @@ v = 0
 while 1:
         ret, frame = cap.read()
         img = cv2.resize(frame, FRAME_SIZE)
-        cv2.imshow("Acquisition", img)
+        cv2.imshow("Acquisition", frame)
         cv2.waitKey(1)
         img = Image.fromarray(img)
         img = np.asarray(img)
@@ -47,8 +47,15 @@ while 1:
 
         print(pred_class, pred_prec, v)
 
-        if v >= 5:
-            time.sleep(3)
+        if v > 9:
+            print("Smile!")
+            for i in range(75):
+                if i % 25 == 0:
+                    print(3 - i / 25)
+                ret, frame = cap.read()
+                cv2.imshow("Acquisition", frame)
+                cv2.waitKey(1)
+            ret, frame = cap.read()
             path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "selfportrait\\" + str(last) + ".jpg")
             cv2.imwrite(filename=path, img=frame)
             last += 1

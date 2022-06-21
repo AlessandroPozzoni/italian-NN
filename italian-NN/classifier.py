@@ -105,4 +105,4 @@ history = model.fit(
     callbacks = [tfk.callbacks.EarlyStopping(monitor='val_accuracy', mode='max', patience=10, restore_best_weights=True)]
 ).history
 
-model.save(os.path.join(os.path.dirname(os.path.abspath(__file__)), "models\\"))
+model.save(os.path.join(os.path.dirname(os.path.abspath(__file__)), "model2"))
